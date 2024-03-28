@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Handlee", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+:root {
+  --IceCold: #a0d2eb;
+  --FreezePurple: #e5eaf5;
+  --MediumPurple: #d0bdf4;
+  --PurplePain: #8458b3;
+  --HeavyPurple: #a28089;
+}

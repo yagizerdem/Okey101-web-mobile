@@ -1,0 +1,24 @@
+.gate{
+    width: 300px;
+    margin: auto;
+    color: var(--FreezePurple);
+}
+.gate > span{
+    font-weight: bold;
+    font-size: 25px;
+}
+.gate > ul{
+    list-style-type: none;
+    margin-left: 30px;
+}
+.gate > input{
+    padding: 5px;
+    margin: 30px auto;
+    width: 200px;
+    display: block;
+    border:none;
+    outline: none;
+    background: var(--FreezePurple);
+    color:var(--MediumPurple);
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
