@@ -13,8 +13,12 @@ const initialState = {
   stack4: null,
   boardMatrix: [Array(15).fill(0),Array(15).fill(0)], // initial board matrix empty
   turn: null,
-  gameState: SD.gameStates.match,
+  gameState: SD.gameStates.home,
+  globalChat:[],
+  from:[],
+  no:null
 };
+
 export const gameSlice = createSlice({
   name: "game",
   initialState,
@@ -57,9 +61,24 @@ export const gameSlice = createSlice({
         if(state.boardMatrix[row][col] == 0) state.boardMatrix[row][col] = tile
         else tiles.push(tile)
       }
+    },
+    pushGlobalChat:(state ,action)=>{
+      state.globalChat.push(action.payload)
+    },
+    setFrom:(state , action)=>{
+      state.from = action.payload
+    },
+    moveInBoard:(state ,action)=>{
+      const {from , to} = action.payload
+      const temp = state.boardMatrix[from[0]][from[1]]
+      state.boardMatrix[from[0]][from[1]] = state.boardMatrix[to[0]][to[1]]
+      state.boardMatrix[to[0]][to[1]] = temp
+    },
+    setPlayerNo:(state , action)=>{
+      state.no = action.payload
     }
   },
 });
 
-export const { setTurn, setGameState,setStack,setOpponents ,setBoardMatrix} = gameSlice.actions;
+export const {setPlayerNo, setTurn, setGameState,setStack,setOpponents ,setBoardMatrix ,pushGlobalChat , setFrom , moveInBoard} = gameSlice.actions;
 export default gameSlice.reducer;

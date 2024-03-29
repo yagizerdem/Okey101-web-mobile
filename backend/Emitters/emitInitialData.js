@@ -11,6 +11,7 @@ function emitInitialData(key) {
     mainstack: roomFromdb.mainStack[roomFromdb.mainStack.length - 1],
     opponents: playerFromdb.opponents,
     tiles: playerFromdb.allTiles,
+    no:playerFromdb.no
   };
   io.to(playerFromdb.socketid).emit("initialdata", dto);
 }

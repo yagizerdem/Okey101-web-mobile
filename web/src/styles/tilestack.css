@@ -1,0 +1,12 @@
+.tile-stack{
+    width: 100px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px dotted var(--PurplePain);
+}
+.you{
+    font-weight: bolder;
+    font-size: 30px;
+}

@@ -1,0 +1,24 @@
+.table {
+  width: 900px;
+  height: 500px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns each taking equal space */
+  grid-gap: 10px; /* Gap between grid items */
+}
+.grid-item {
+  background-color: var(--IceCold);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.table img {
+    width: 100px;
+    height: 100px;
+}

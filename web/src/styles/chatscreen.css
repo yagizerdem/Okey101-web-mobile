@@ -1,7 +1,30 @@
-.cahtscreen{
-    width: 90%;
-    display: block;
-    margin: 5% auto;
-    height: 80%;
-    background-color: #444444;
+.cahtscreen {
+  width: 90%;
+  display: block;
+  margin: 5% auto;
+  height: 80%;
+  background-color: #444444;
+  overflow-y: scroll;
+}
+.cahtscreen::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+.cahtscreen::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+.cahtscreen::-webkit-scrollbar-thumb {
+  background: #888; /* Thumb color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.cahtscreen::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Hover color */
+}
+.chatoutput {
+  border: 1px solid #ccc; /* Just for visualization */
+  word-wrap: break-word; /* Old syntax for compatibility */
+  overflow-wrap: break-word; /* Modern syntax */
+  padding:3px;
+  margin: 5px 0;
 }

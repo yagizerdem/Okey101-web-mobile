@@ -3,7 +3,10 @@ import { CSSTransition } from "react-transition-group";
 import "../styles/chat.css";
 import ChatScreen from "../components/ChatScreen";
 import useKey from "../hooks/useKey"
+import queryObject from "../queryObject";
+import {useSelector}from 'react-redux'
 const Chat = () => {
+  const gameSlice =useSelector(state => state.game) 
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef();
   const toggleSidebar = () => {
@@ -14,7 +17,7 @@ const Chat = () => {
   }
   function sendChat() {
     // emit
-    console.log(ref.current.value);
+    queryObject.sendChat(ref.current.value)
     //
     ref.current.value = ''
   }
@@ -32,6 +35,7 @@ const Chat = () => {
   useKey('escape',()=>{
     setIsOpen(false)
   })
+
   return (
     <div className="chat-container">
       <button onClick={toggleSidebar} className="sidebar-button">
@@ -44,7 +48,7 @@ const Chat = () => {
         unmountOnExit
       >
         <div className="sidebar">
-          <ChatScreen></ChatScreen>
+          <ChatScreen messages={gameSlice.globalChat}></ChatScreen>
           {isOpen && (
             <Fragment>
               <button onClick={closeChat} className="close-chat-button">
