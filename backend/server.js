@@ -1,18 +1,32 @@
-const cors = require('cors')
-const express = require('express');
-const app = express();
-app.use(cors()) // allow all cros origins
-const http = require('http');
+const app = require('./app.js')
+// create server
+const http = require("http");
 const server = http.createServer(app);
-const { Server } = require("socket.io");
-const io = new Server(server);
+//
+const {setIO}= require('./socket-setup.js')
+const io = setIO(server)
 
-const PORT = process.env.PORT || 3000
-server.listen(PORT,()=>{
-    console.log(`server listening on port : ${PORT}`)
-})
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`server listening on port : ${PORT}`);
+});
 
 io.on("connection", onConnection);
-function onConnection(socket){
-    console.log(socket.id)
-}   
+
+const { Player, allPlayers } = require("./db/player.js");
+
+// register
+const registerDisconnectHandler = require("./Listeners/disconnect");
+const registerSearchMatchHandler = require("./Listeners/searchMatch");
+
+function onConnection(socket) {
+  newPlayer(socket.id);
+  // listeners
+  registerDisconnectHandler(io, socket);
+  registerSearchMatchHandler(io, socket);
+}
+
+function newPlayer(socketid) {
+  const newPlayer = new Player({ socketid });
+  allPlayers[socketid] = newPlayer;
+}

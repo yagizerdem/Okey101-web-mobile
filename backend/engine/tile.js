@@ -1,4 +1,5 @@
 const uuid = require('uuid')
+const {fisher_yates} = require('../util/fisher_yates')
 class Tile{
     static colors = ['red','blue','green','black']
     constructor({number ,color ,uuid}){
@@ -15,7 +16,7 @@ const generateAllTiles = ()=>{
             allTiles.push(new Tile({color , number:i ,uuid:uuid.v1()}))
         }
     }
-    return allTiles.concat(allTiles)
+    return fisher_yates(allTiles.concat(allTiles))
 }
 
-module.exports = {generateAllTiles}
+module.exports = {Tile , generateAllTiles}

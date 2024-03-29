@@ -34,12 +34,12 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "/game",
+        element: <GameLayout/>,
+      }
     ],
     errorElement:<ErrorLayout></ErrorLayout> // global error boundry
   },
-  {
-    path: "/game",
-    element: <GameLayout/>,
-  }
 ]);
 export default router;

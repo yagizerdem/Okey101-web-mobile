@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import SD from "../SD.js";
 import { setGameState } from "../gameSlice.js";
 import {useDispatch}from 'react-redux'
-import {socket} from '../socket.js'
+import queryObject from "../queryObject.js";
 const Button = styled.button`
   width: 160px;
   height: 40px;
@@ -31,7 +31,7 @@ export default function Gate() {
       return;
     }
     dispatch(setGameState(SD.gameStates.search))
-    if(!socket.connected) socket.connect()
+    queryObject.findMatch(ref.current.value)
   }
   useKey("enter", () => {
     if (!focused) {
