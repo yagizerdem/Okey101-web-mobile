@@ -9,9 +9,9 @@ const SD ={
         end:3
     },
     ppimgPaths:{
-        top:"bear.jpg",
-        left:"snake.jpeg",
-        right:"eagle.jpg"
+        top:"http://localhost:3000/bear.jpg",
+        left:"http://localhost:3000/snake.jpeg",
+        right:"http://localhost:3000/eagle.jpg"
     }
 }
 

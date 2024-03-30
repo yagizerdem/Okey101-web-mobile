@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,8 +6,14 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useDispatch } from "react-redux";
+import { setGameState } from "../gameSlice";
+import SD from "../SD";
+import queryObject from "../queryObject"
+
 export default function Gate() {
   const [name, setName] = useState("");
+  const dispatch = useDispatch()
   function onChange(e) {
     console.log(e);
     setName(e);
@@ -15,11 +21,12 @@ export default function Gate() {
   function findMatch(){
     if(name.trim().length == 0) return
     else{
-        console.log("find match")
+        dispatch(setGameState(SD.gameStates.search))
+        queryObject.findMatch(name)
     } 
   }
   return (
-    <View style={styles.gate}>
+    <Fragment>
       <Text style={styles.title}>Okey 101</Text>
       <TextInput
         onChangeText={(e) => onChange(e)}
@@ -28,7 +35,8 @@ export default function Gate() {
       <TouchableOpacity style={styles.button} onPress={findMatch}>
         <Text style={{ color: "#a0d2eb" }}>find match...</Text>
       </TouchableOpacity>
-    </View>
+    </Fragment>
+
   );
 }
 const styles = StyleSheet.create({
@@ -37,17 +45,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     marginTop: 10,
-  },
-  gate: {
-    width: 200,
-    height: 200,
-    backgroundColor: "#fff",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    marginTop: -100,
-    marginLeft: -100,
-    borderRadius: 10,
   },
   input: {
     width: 150,
