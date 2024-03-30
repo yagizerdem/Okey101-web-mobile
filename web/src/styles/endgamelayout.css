@@ -1,0 +1,33 @@
+.endgamelayoutcontainer{
+    width: 400px;
+    height: 400px;
+    background-color: var(--IceCold);
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50% ,-50%);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.endgamelayoutcontainer > h1{
+    margin: 20px;
+    text-align: center;
+}
+.endgamelayoutcontainer > span{
+    display: block;
+    text-align: center;
+    margin: auto;
+    font-weight: bolder;
+    font-size: 25px;
+    margin-top: 50px;
+}
+.endgamelayoutcontainer > button{
+    width: 200px;
+    height: 40px;
+    margin: 40px auto;
+    display: block;
+    border: 0;
+    outline: 0;
+    background: var(--FreezePurple);
+    cursor: pointer;
+}

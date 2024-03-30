@@ -8,7 +8,12 @@ import {
   setOpponents,
   setBoardMatrix,
   pushGlobalChat,
-  setPlayerNo
+  setPlayerNo,
+  throwTile,
+  updateStacksUI,
+  switchPlayerTurn,
+  takeTileUI,
+  setGameEnderName
 } from "../gameSlice";
 import SD from "../SD";
 export default function useSocket() {
@@ -25,12 +30,36 @@ export default function useSocket() {
     function newChat(chat){
       store.dispatch(pushGlobalChat(chat))
     }
+    function dropTile(tileuuid){
+      store.dispatch(throwTile(tileuuid))
+    }
+    function udpatestacks(stacks){
+      store.dispatch(updateStacksUI(stacks))
+    }
+    function switchturn(){
+      store.dispatch(switchPlayerTurn())
+    }
+    function newtile(tile){
+      store.dispatch(takeTileUI(tile))
+    }
+    function gameend(name){
+      store.dispatch(setGameState(SD.gameStates.end))
+      store.dispatch(setGameEnderName(name))
+    }
     socket.on("initialdata", startGame);
     socket.on("newchat",newChat)
-
+    socket.on("droptile",dropTile)
+    socket.on("udpatestacks",udpatestacks)
+    socket.on("switchturn",switchturn)
+    socket.on("newtile",newtile)
+    socket.on("gameend",gameend)
     return () => {
       socket.off("initialdata", startGame);
       socket.off("newchat",newChat)
+      socket.off("droptile",dropTile)
+      socket.off("switchturn",switchturn)
+      socket.off("newtile",newtile)
+      socket.off("gameend",gameend)
     };
   }, []);
 }

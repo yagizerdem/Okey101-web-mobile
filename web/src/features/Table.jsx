@@ -14,7 +14,7 @@ export default function Table() {
       <div className="grid-item">
         <img src={SD.ppimgPaths.top}></img>
         <br />
-        <span className="opponentname">{gameSlice.opponents.top.name}</span>
+        <span className="opponentname">{gameSlice.opponents.top?.name}</span>
       </div>
       <div className="grid-item">
       <TileStack no={(no+1)%4+1}></TileStack>
@@ -22,7 +22,7 @@ export default function Table() {
       <div className="grid-item">
       <img src={SD.ppimgPaths.left}></img>
       <br />
-        <span className="opponentname">{gameSlice.opponents.left.name}</span>
+        <span className="opponentname">{gameSlice.opponents.left?.name}</span>
       </div>
       <div className="grid-item">
         {/* main stack */}
@@ -31,7 +31,7 @@ export default function Table() {
       <div className="grid-item">
       <img src={SD.ppimgPaths.right}></img>
       <br />
-        <span className="opponentname">{gameSlice.opponents.right.name}</span>
+        <span className="opponentname">{gameSlice.opponents.right?.name}</span>
       </div>
       <div className="grid-item">
       <TileStack no={no}></TileStack>

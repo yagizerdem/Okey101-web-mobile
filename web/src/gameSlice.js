@@ -16,7 +16,8 @@ const initialState = {
   gameState: SD.gameStates.home,
   globalChat:[],
   from:[],
-  no:null
+  no:null,
+  gameendername:''
 };
 
 export const gameSlice = createSlice({
@@ -76,9 +77,48 @@ export const gameSlice = createSlice({
     },
     setPlayerNo:(state , action)=>{
       state.no = action.payload
+    },
+    throwTile:(state , action)=>{
+      const tileuuid = action.payload
+      console.log(tileuuid)
+      for(let i = 0 ; i <2 ; i++){
+        for(let j = 0 ; j < 15 ; j++){
+          if(state.boardMatrix[i][j] == 0) continue
+          if(state.boardMatrix[i][j].uuid == tileuuid){
+            state.boardMatrix[i][j] = 0
+          } 
+        }
+      }
+    },
+    updateStacksUI:(state , action)=>{
+      const {stack1 , stack2 , stack3 , stack4} = action.payload
+      state.stack1 = stack1
+      state.stack2 = stack2
+      state.stack3 = stack3
+      state.stack4 = stack4
+    },
+    switchPlayerTurn:(state ,action)=>{
+      state.turn = !state.turn
+    },
+    takeTileUI:(state ,action)=>{
+      let newTile = action.payload
+      while(true){
+        let rndrow = Math.floor(Math.random()*2)
+        let rndcol = Math.floor(Math.random()*15)
+        if(state.boardMatrix[rndrow][rndcol] == 0){
+          state.boardMatrix[rndrow][rndcol]  = newTile
+          break
+        }
+        else  continue
+        
+      }
+      
+    },
+    setGameEnderName:(state ,action)=>{
+      state.gameendername = action.payload
     }
   },
 });
 
-export const {setPlayerNo, setTurn, setGameState,setStack,setOpponents ,setBoardMatrix ,pushGlobalChat , setFrom , moveInBoard} = gameSlice.actions;
+export const {setGameEnderName,takeTileUI,switchPlayerTurn,updateStacksUI,throwTile,setPlayerNo, setTurn, setGameState,setStack,setOpponents ,setBoardMatrix ,pushGlobalChat , setFrom , moveInBoard} = gameSlice.actions;
 export default gameSlice.reducer;

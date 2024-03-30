@@ -19,13 +19,20 @@ const { Player, allPlayers } = require("./db/player.js");
 const registerDisconnectHandler = require("./Listeners/disconnect");
 const registerSearchMatchHandler = require("./Listeners/searchMatch");
 const registerChatHandler = require("./Listeners/chatListener.js")
+const registerDropPieceHandler = require("./Listeners/dropPieceListener.js")
+const registertakeTileHandler = require('./Listeners/takeTileListener.js')
+const registerFinishGameHandler = require('./Listeners/finishGameListener.js')
 
 function onConnection(socket) {
   newPlayer(socket.id);
+  console.log(socket.id)
   // listeners
   registerDisconnectHandler(io, socket);
   registerSearchMatchHandler(io, socket);
   registerChatHandler(io,socket);
+  registerDropPieceHandler(io,socket)
+  registertakeTileHandler(io,socket)
+  registerFinishGameHandler(io,socket)
 }
 
 function newPlayer(socketid) {

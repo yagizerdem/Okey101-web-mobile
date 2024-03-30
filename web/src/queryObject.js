@@ -5,6 +5,15 @@ const queryObject = {
     },
     sendChat:(chat)=>{
         socket.emit("sendchat",chat)
+    },
+    dropPiece:(uuid, no)=>{
+        socket.emit("droppiece",{uuid , no})
+    },
+    takePiece:({stackno})=>{
+        socket.emit("takepiece",{stackno})
+    },
+    finishGame:({boardMatrix})=>{
+        socket.emit("finishGame",boardMatrix)
     }
 }
 

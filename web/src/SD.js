@@ -5,7 +5,8 @@ const SD ={
     gameStates:{
         home:0,
         search:1,
-        match:2
+        match:2,
+        end:3
     },
     ppimgPaths:{
         top:"http://localhost:3000/bear.jpg",

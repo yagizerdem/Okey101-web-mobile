@@ -1,9 +1,9 @@
-const uuid = require("uuid");
+const crypto = require('crypto');
 const { Room, allRooms } = require("../db/room");
 const { generateAllTiles } = require("./tile");
 const { allPlayers } = require("../db/player");
 function createRoom({ playerkeys }) {
-  const newRoom = new Room({ uuid: uuid.v1() });
+  const newRoom = new Room({ uuid: crypto.randomUUID() });
   newRoom.allPlayers = playerkeys;
   newRoom.mainStack = generateAllTiles();
   newRoom.activePlayerCount = 4;

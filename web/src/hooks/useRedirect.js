@@ -9,7 +9,6 @@ export default function useRedirect(){
     const gameState = useSelector(state => state.game.gameState)
     useEffect(()=>{
         if(pathname != "/home/gate" && gameState == SD.gameStates.home){
- 
             navigate('/home/gate')
         }
         else if(pathname != "/home/search" && gameState == SD.gameStates.search){
@@ -17,6 +16,9 @@ export default function useRedirect(){
         }
         else if(pathname != "game" && gameState == SD.gameStates.match){
             navigate('/game')
+        }
+        else if(pathname != "end" && gameState == SD.gameStates.end){
+            navigate('/end')
         }
     },[gameState,pathname,navigate])
 

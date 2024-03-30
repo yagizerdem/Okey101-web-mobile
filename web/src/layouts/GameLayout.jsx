@@ -6,6 +6,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import ShowTurn from "../components/ShowTurn";
 import Table from "../features/Table";
+import FinishGame from "../components/FinishGame";
 
 export default function GameLayout() {
   const gameSlice = useSelector((state) => state.game);
@@ -17,6 +18,7 @@ export default function GameLayout() {
       <Chat></Chat>
       <Table></Table>
       <Board></Board>
+      <FinishGame></FinishGame>
     </DndProvider>
   );
 }

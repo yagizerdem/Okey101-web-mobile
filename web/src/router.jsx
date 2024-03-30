@@ -7,6 +7,7 @@ import SD from "./SD";
 import GameLayout from "./layouts/GameLayout.jsx";
 import ErrorLayout from "./layouts/ErrorLayout.jsx";
 import Wait from "./components/Wait.jsx";
+import  EndGameLayout from "./layouts/EndGameLayout.jsx"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/game",
         element: <GameLayout/>,
+      },
+      {
+        path: "/end",
+        element: <EndGameLayout/>,
       }
     ],
     errorElement:<ErrorLayout></ErrorLayout> // global error boundry
